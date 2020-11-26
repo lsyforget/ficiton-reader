@@ -11,7 +11,7 @@
       <img :src="imgUrl" alt="">
       <side-bar :activeName="activeName" :refresh="refresh" :keyWord="keyWord" @getContent="getContent" :menuList="menuList" :total="total" :page="page" :pageSize="pageSize"></side-bar>
     </el-aside>
-    <el-main>
+    <el-main id="main">
       <el-button :class="{'el-icon-s-fold':isCollapse, 'el-icon-s-unfold':!isCollapse, 'expend': isCollapse, 'collapse': !isCollapse }" @click="toggle"></el-button>
       <div class="btn__group" v-if="this.content">
         <el-button plain @click="toggleChapter('prev')">上一页</el-button>
@@ -127,6 +127,7 @@ export default {
       })
       console.log(chapter)
       this.activeName = chapter
+      document.getElementById('main').scrollTop = 0
     },
     // 书签
     setMark () {
