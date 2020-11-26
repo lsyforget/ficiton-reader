@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-aside :style="'width:'+width+'px'">
+    <el-aside :style="'width:'+width+'px;overflow-x:hidden;'">
       <p class="title">Fiction-Reader</p>
       <div>
         <el-input class="search__input" v-model="keyWord">
@@ -23,8 +23,8 @@
         <el-button plain @click="toggleChapter('prev')">上一页</el-button>
         <el-button plain @click="toggleChapter('next')">下一页</el-button>
       </div>
-      <el-button plain class="set__mark el-icon-collection" @click="setMark">存为书签</el-button>
-      <el-button plain class="get__mark el-icon-collection" @click="getMark">获取书签</el-button>
+      <!-- <el-button plain class="set__mark el-icon-collection" @click="setMark">存为书签</el-button>
+      <el-button plain class="get__mark el-icon-collection" @click="getMark">获取书签</el-button> -->
     </el-main>
   </el-container>
 </template>
@@ -78,6 +78,7 @@ export default {
         this.$message.error('获取内容失败！')
       }
       this.content = response.data
+      document.getElementById('main').scrollTop = 0
     },
     // 获取章节
     async getMenuList () {
